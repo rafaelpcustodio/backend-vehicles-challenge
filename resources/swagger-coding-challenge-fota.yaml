@@ -1,0 +1,61 @@
+swagger: "2.0"
+info:
+  description: "API to query installable and incompatible features on trucks."
+  version: "1.0.0"
+  title: "MAN FOTA Challenge"
+host: "fota.com"
+tags:
+  - name: "fota"
+    description: "Query possible features per vehicle and possible vehicles per feature"
+paths:
+  /fota/vehicles/{vin}/installable:
+    get:
+      tags:
+        - "fota"
+      summary: "Find installable features by VIN"
+      description: "gives all the features that can be installed for the corresponding vin"
+      operationId: "getInstallable"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "vin"
+          in: "path"
+          description: "Vehicle identification number"
+          required: true
+          type: "string"
+          format: "uuid"
+      responses:
+        200:
+          description: "successful operation"
+            #schema:
+          #TODO: response
+        404:
+          description: "Not found"
+        #TODO: other  possible errors
+
+  /fota/vehicles/{vin}/incompatible:
+    get:
+      tags:
+        - "fota"
+      summary: "Find incompatible features by VIN"
+      description: "gives all the features that cannot be installed for the corresponding vin"
+      operationId: "getIncompatible"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "vin"
+          in: "path"
+          description: "Vehicle identification number"
+          required: true
+          type: "string"
+          format: "uuid"
+      responses:
+        200:
+          description: "successful operation"
+            #schema:
+          #TODO: response
+        404:
+          description: "Not found"
+        #TODO: other  possible errors
+
+          
